@@ -117,14 +117,10 @@ public class UserController {
 
     /**
      * 用户列表
-     *
-     * @param session
-     * @return
      */
     @GetMapping("/getUsers")
-    public ResponseVo<List<User>> getUsers(HttpSession session) {
-        List<User> users = (List<User>) session.getAttribute(MallConst.CURRENT_USER);
-        return ResponseVo.success(users);
+    public ResponseVo<List<User>> getUsers() {
+        return userService.getUser();
     }
 
     /**

@@ -6,11 +6,13 @@ import com.laychv.pay_mall.enums.RoleEnum;
 import com.laychv.pay_mall.pojo.User;
 import com.laychv.pay_mall.service.IUserService;
 import com.laychv.pay_mall.vo.ResponseVo;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -54,7 +56,13 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public ResponseVo<List<User>> getUser() {
-        final List<User> user = userMapper.getUser();
-        return ResponseVo.success(user);
+        final List<User> users = userMapper.getUser();
+        final List<User> userList = new ArrayList<>();
+        for (User user : users) {
+            final User user1 = new User();
+            BeanUtils.copyProperties(user, user1);
+            userList.add(user);
+        }
+        return ResponseVo.success(userList);
     }
 }
