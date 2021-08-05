@@ -170,3 +170,47 @@ AOP 包名
 
 查询一级目录 -> 子级目录
 
+### 商品列表
+
+如果不想通过继承的方式创建2个类,配置columnOverride的方式,即可生成到一个类中
+
+```xml
+
+<table tableName="mall_product" domainObjectName="Product"
+       enableCountByExample="false"
+       enableDeleteByExample="false"
+       enableSelectByExample="false"
+       enableUpdateByExample="false">
+    <columnOverride column="detail" jdbcType="VARCHAR"/>
+    <columnOverride column="sub_images" jdbcType="VARCHAR"/>
+</table>
+```
+
+### mybatis 报错
+
+参数类型是Set时候
+
+```
+org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.binding.BindingException: Parameter 'categoryIdSet' not found. Available parameters are [collection]
+```
+
+```
+<foreach collection="categoryIdSet" item="item" index="index" open="(" separator="=" close=")">
+                #{item}
+</foreach>
+List<Product> selectByCategoryIdSet(@Param("categoryIdSet") Set<Integer> categoryIdSet);
+```
+
+### 商品列表 - 分页
+
+mybatis 分页插件
+
+https://github.com/pagehelper/Mybatis-PageHelper/blob/master/README_zh.md
+
+```xml
+<dependency>
+  <groupId>com.github.pagehelper</groupId>
+  <artifactId>pagehelper-spring-boot-starter</artifactId>
+  <version>1.3.1</version>
+</dependency>
+```

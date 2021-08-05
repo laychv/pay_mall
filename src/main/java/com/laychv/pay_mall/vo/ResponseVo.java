@@ -30,8 +30,8 @@ public class ResponseVo<T> {
         this.data = data;
     }
 
-    public static <T> ResponseVo<T> successByMsg(String msg) {
-        return new ResponseVo<>(ResponseEnum.SUCCESS.getCode(), msg);
+    public static <T> ResponseVo<T> success(String msg, T data) {
+        return new ResponseVo<>(ResponseEnum.SUCCESS.getCode(), msg == null ? ResponseEnum.SUCCESS.getMsg() : msg, data);
     }
 
     public static <T> ResponseVo<T> success(T data) {

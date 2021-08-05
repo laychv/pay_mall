@@ -1,10 +1,12 @@
-package com.laychv.pay_mall;
+package com.laychv.pay_mall.service.impl;
 
+import com.laychv.pay_mall.PayMallApplicationTests;
 import com.laychv.pay_mall.enums.ResponseEnum;
 import com.laychv.pay_mall.enums.RoleEnum;
 import com.laychv.pay_mall.pojo.User;
 import com.laychv.pay_mall.service.IUserService;
 import com.laychv.pay_mall.vo.ResponseVo;
+import com.laychv.pay_mall.vo.UserVo;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
@@ -34,13 +36,13 @@ public class UserServiceImplTest extends PayMallApplicationTests {
 
     @Test
     public void login() {
-        ResponseVo<User> responseVo = userService.login(USERNAME, PASSWORD);
+        ResponseVo<UserVo> responseVo = userService.login(USERNAME, PASSWORD);
         Assert.assertEquals(ResponseEnum.SUCCESS.getCode(), responseVo.getStatus());
     }
 
     @Test
     public void getUser() {
-        final ResponseVo<List<User>> user = userService.getUser();
+        final ResponseVo<List<User>> user = userService.info();
         log.info(user.toString());
     }
 }

@@ -16,6 +16,12 @@ server:
     session:
       timeout: 120
 
+#pagehelper:
+#  helperDialect: mysql
+#  reasonable: true
+#  supportMethodsArguments: true
+#  params: count=countSql
+
 logging:
   pattern:
     console: "[%thread] %-5level %logger{36} - %m%n"

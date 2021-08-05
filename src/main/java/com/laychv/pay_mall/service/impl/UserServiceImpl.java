@@ -6,6 +6,7 @@ import com.laychv.pay_mall.enums.RoleEnum;
 import com.laychv.pay_mall.pojo.User;
 import com.laychv.pay_mall.service.IUserService;
 import com.laychv.pay_mall.vo.ResponseVo;
+import com.laychv.pay_mall.vo.UserVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,7 +43,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public ResponseVo<User> login(String username, String password) {
+    public ResponseVo<UserVo> login(String username, String password) {
         final User user = userMapper.selectByUsername(username);
         if (user == null) {
             return ResponseVo.error(ResponseEnum.USERNAME_OR_PASSWORD_ERROR);
@@ -50,12 +51,13 @@ public class UserServiceImpl implements IUserService {
         if (!user.getPassword().equalsIgnoreCase(DigestUtils.md5DigestAsHex(password.getBytes(StandardCharsets.UTF_8)))) {
             return ResponseVo.error(ResponseEnum.USERNAME_OR_PASSWORD_ERROR);
         }
-        user.setPassword("");
-        return ResponseVo.success(user);
+        final UserVo userVo = new UserVo();
+        BeanUtils.copyProperties(user,userVo);
+        return ResponseVo.success(userVo);
     }
 
     @Override
-    public ResponseVo<List<User>> getUser() {
+    public ResponseVo<List<User>> info() {
         final List<User> users = userMapper.getUser();
         final List<User> userList = new ArrayList<>();
         for (User user : users) {

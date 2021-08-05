@@ -42,28 +42,54 @@ sql语句缺少默认值
 
 java.sql.SQLException: Field 'create_time' doesn't have a default value
 
-在mysql中添加默认时间, 以Navicat为例,选中表 -> 菜单栏(设计表Ctrl + D) -> 
+在mysql中添加默认时间, 以Navicat为例,选中表 -> 菜单栏(设计表Ctrl + D) ->
 
 - Navicat 中没有设置默认CURRENT_TIMESTAMP
-  - https://blog.csdn.net/qq_43658218/article/details/107009034
-  
+    - https://blog.csdn.net/qq_43658218/article/details/107009034
+
 - 举例: mall_user中的字段create_time/update_time
-  - DEFAULT CURRENT_TIMESTAMP(0) 默认时间
+    - DEFAULT CURRENT_TIMESTAMP(0) 默认时间
+
 ```sql
 DROP TABLE IF EXISTS `mall_user`;
-CREATE TABLE `mall_user`  (
-                            `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户表id',
-                            `username` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户名',
-                            `password` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户密码，MD5加密',
-                            `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-                            `phone` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-                            `question` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '找回密码问题',
-                            `answer` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '找回密码答案',
-                            `role` int(4) NOT NULL COMMENT '角色0-管理员,1-普通用户',
-                            `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
-                            `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '最后一次更新时间',
-                            PRIMARY KEY (`id`) USING BTREE,
-                            UNIQUE INDEX `user_name_unique`(`username`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `mall_user`
+(
+    `id`          int(11)                                                 NOT NULL AUTO_INCREMENT COMMENT '用户表id',
+    `username`    varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci  NOT NULL COMMENT '用户名',
+    `password`    varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci  NOT NULL COMMENT '用户密码，MD5加密',
+    `email`       varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci  NULL     DEFAULT NULL,
+    `phone`       varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci  NULL     DEFAULT NULL,
+    `question`    varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL     DEFAULT NULL COMMENT '找回密码问题',
+    `answer`      varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL     DEFAULT NULL COMMENT '找回密码答案',
+    `role`        int(4)                                                  NOT NULL COMMENT '角色0-管理员,1-普通用户',
+    `create_time` datetime                                                NOT NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
+    `update_time` datetime                                                NOT NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '最后一次更新时间',
+    PRIMARY KEY (`id`) USING BTREE,
+    UNIQUE INDEX `user_name_unique` (`username`) USING BTREE
+) ENGINE = InnoDB
+  AUTO_INCREMENT = 2
+  CHARACTER SET = utf8
+  COLLATE = utf8_general_ci
+  ROW_FORMAT = Dynamic;
 
+```
+
+## mybatis-pagehelper
+
+分页无效
+
+添加依赖
+
+```xml
+<dependency>
+    <groupId>com.github.pagehelper</groupId>
+    <artifactId>pagehelper-spring-boot-starter</artifactId>
+    <version>1.2.13</version>
+</dependency>
+```
+
+注意: 在查询语句上面
+
+```java
+PageHelper.startPage(pageNum, pageSize);
 ```

@@ -7,6 +7,7 @@ import com.laychv.pay_mall.form.UserRegisterForm;
 import com.laychv.pay_mall.pojo.User;
 import com.laychv.pay_mall.service.IUserService;
 import com.laychv.pay_mall.vo.ResponseVo;
+import com.laychv.pay_mall.vo.UserVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,10 +64,11 @@ public class UserController {
     }
 
     @PostMapping("/register2")
-    public ResponseVo<User> register(@Valid @RequestParam("username") @NotNull(message = "用户名不能为空") String username,
-                                     @Valid @RequestParam("password") @NotNull(message = "密码不能为空") String password,
-                                     @Valid @RequestParam("email") String email,
-                                     @Valid @RequestParam("role") @NotEmpty(message = "角色不能为空") Integer role) {
+    public ResponseVo<User> register(
+            @Valid @RequestParam("username") @NotNull(message = "用户名不能为空") String username,
+            @Valid @RequestParam("password") @NotNull(message = "密码不能为空") String password,
+            @Valid @RequestParam("email") String email,
+            @Valid @RequestParam("role") @NotEmpty(message = "角色不能为空") Integer role) {
         final User user = new User(username, password, email, role);
         BeanUtils.copyProperties(username, user);
         log.info("username={}", user);
@@ -83,11 +85,11 @@ public class UserController {
      */
     @PostMapping("/login")
     @ResponseBody
-    public ResponseVo<User> login(@Valid @RequestBody UserLoginForm form, HttpSession session, BindingResult result) {
+    public ResponseVo<UserVo> login(@Valid @RequestBody UserLoginForm form, HttpSession session, BindingResult result) {
         if (result.hasErrors()) {
             return ResponseVo.error(ResponseEnum.PARAM_ERROR, result);
         }
-        final ResponseVo<User> login = userService.login(form.getUsername(), form.getPassword());
+        final ResponseVo<UserVo> login = userService.login(form.getUsername(), form.getPassword());
         // 设置session
         session.setAttribute(MallConst.CURRENT_USER, login.getData());
         log.info("/user/login sessionId={}" + session.getId());
@@ -103,7 +105,7 @@ public class UserController {
      * @param session
      * @return
      */
-    @GetMapping("/getUser")
+    @GetMapping("/info")
     @ResponseBody
     public ResponseVo<User> userInfo(HttpSession session) {
         // 获取session
@@ -120,7 +122,7 @@ public class UserController {
      */
     @GetMapping("/getUsers")
     public ResponseVo<List<User>> getUsers() {
-        return userService.getUser();
+        return userService.info();
     }
 
     /**

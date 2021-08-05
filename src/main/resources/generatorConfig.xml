@@ -60,10 +60,20 @@
         <!--               enableSelectByExample="false"-->
         <!--               enableUpdateByExample="false"/>-->
 
-        <table tableName="mall_category" domainObjectName="Category"
-               enableUpdateByExample="false"
-               enableSelectByExample="false"
+        <!--        <table tableName="mall_category" domainObjectName="Category"-->
+        <!--               enableUpdateByExample="false"-->
+        <!--               enableSelectByExample="false"-->
+        <!--               enableDeleteByExample="false"-->
+        <!--               enableCountByExample="false"/>-->
+
+        <table tableName="mall_product" domainObjectName="Product"
+               enableCountByExample="false"
                enableDeleteByExample="false"
-               enableCountByExample="false"/>
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <columnOverride column="detail" jdbcType="VARCHAR"/>
+            <columnOverride column="sub_images" jdbcType="VARCHAR"/>
+        </table>
+
     </context>
 </generatorConfiguration>
