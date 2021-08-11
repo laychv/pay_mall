@@ -3,9 +3,6 @@ package com.laychv.pay_mall.vo;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.laychv.pay_mall.enums.ResponseEnum;
 import lombok.Data;
-import org.springframework.validation.BindingResult;
-
-import java.util.Objects;
 
 @Data
 @JsonInclude(value = JsonInclude.Include.NON_NULL)
@@ -49,11 +46,4 @@ public class ResponseVo<T> {
     public static <T> ResponseVo<T> error(ResponseEnum en, String msg) {
         return new ResponseVo<>(en.getCode(), msg);
     }
-
-    public static <T> ResponseVo<T> error(ResponseEnum en, BindingResult bind) {
-        return new ResponseVo<>(en.getCode(),
-                Objects.requireNonNull(bind.getFieldError()).getField()
-                        + " " + bind.getFieldError().getDefaultMessage());
-    }
-
 }

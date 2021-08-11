@@ -42,7 +42,7 @@ logging:
 
 1. dao中不用每个都写@Mapper 通过全局配置
 
-```Java
+```
 @MapperScan(basePackages = "com.laychv.pay_mall.dao")
 ```   
 
@@ -84,7 +84,7 @@ logging:
 
 https://mp.weixin.qq.com/s/VOO4QaQF8mWz0l33_G7u-A
 
-```xml
+```
 <!--校验组件-->
 <dependency>
     <groupId>org.springframework.boot</groupId>
@@ -214,3 +214,10 @@ https://github.com/pagehelper/Mybatis-PageHelper/blob/master/README_zh.md
   <version>1.3.1</version>
 </dependency>
 ```
+
+---
+
+## 购物车模块
+
+表单统一验证
+

@@ -4,6 +4,11 @@ spring:
     username: root
     password: 123456
     url: jdbc:mysql://127.0.0.1:3306/pay_mall?characterEncoding=UTF8&autoReconnect=true&useSSL=false&serverTimezone=UTC
+  redis:
+    host: 127.0.0.1
+    port: 6379
+#    password:
+
 mybatis:
   type-aliases-package: com.laychv.pay_mall.dao
   mapper-locations: classpath*:mappers/*.xml
@@ -14,7 +19,7 @@ mybatis:
 server:
   servlet:
     session:
-      timeout: 120
+      timeout: 12000
 
 #pagehelper:
 #  helperDialect: mysql

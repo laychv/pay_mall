@@ -93,3 +93,9 @@ CREATE TABLE `mall_user`
 ```java
 PageHelper.startPage(pageNum, pageSize);
 ```
+
+## Redis 错误
+
+存储结构发生变化, 导致的错误
+
+WRONGTYPE Operation against a key holding the wrong type of value

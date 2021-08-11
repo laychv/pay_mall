@@ -12,5 +12,5 @@ public interface IUserService {
 
     ResponseVo<UserVo> login(String username, String password);
 
-    ResponseVo<List<User>> info();
+    ResponseVo<List<UserVo>> info();
 }

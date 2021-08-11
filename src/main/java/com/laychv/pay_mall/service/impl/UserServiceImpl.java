@@ -57,13 +57,13 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public ResponseVo<List<User>> info() {
+    public ResponseVo<List<UserVo>> info() {
         final List<User> users = userMapper.getUser();
-        final List<User> userList = new ArrayList<>();
+        final List<UserVo> userList = new ArrayList<>();
         for (User user : users) {
-            final User user1 = new User();
-            BeanUtils.copyProperties(user, user1);
-            userList.add(user);
+            final UserVo userVo = new UserVo();
+            BeanUtils.copyProperties(user, userVo);
+            userList.add(userVo);
         }
         return ResponseVo.success(userList);
     }

@@ -42,7 +42,7 @@ public class UserServiceImplTest extends PayMallApplicationTests {
 
     @Test
     public void getUser() {
-        final ResponseVo<List<User>> user = userService.info();
+        final ResponseVo<List<UserVo>> user = userService.info();
         log.info(user.toString());
     }
 }

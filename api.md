@@ -24,7 +24,7 @@ json
 
 ---
 
-## user
+## 用户模块
 
 **1. 用户注册**
 
@@ -115,7 +115,7 @@ response
 
 ---
 
-## category
+## 商品模块
 
 商品分类
 
@@ -191,3 +191,117 @@ response
 ```
 
 ---
+
+## 购物车模块
+
+**1. 购物车添加商品**
+
+POST/cart/add
+
+request
+```
+productId
+selected:true
+```
+
+response
+
+```
+```
+
+**2. 购物车列表**
+
+GET/cart/list
+
+request
+
+略
+
+response
+
+```json
+{
+  "status": 0,
+  "data": {
+    "selectedAll": true,
+    "cartTotalPrice": 15596.00,
+    "cartTotalQuantity": 4,
+    "list": [
+      {
+        "productId": 26,
+        "quantity": 1,
+        "productName": "Apple iPhone 7 Plus (A1661) 128G 玫瑰金色 移动联通电信4G手机",
+        "productSubtitle": "iPhone 7，现更以红色呈现。",
+        "productMainImage": "241997c4-9e62-4824-b7f0-7425c3c28917.jpeg",
+        "productStock": 96,
+        "productTotalPrice": 6999.00,
+        "productPrice": 6999.00,
+        "productStatus": 1,
+        "productSelected": true
+      }
+    ]
+  }
+}
+
+```
+
+**3. 更新购物车**
+
+PUT/cart/update/{productId}
+
+request
+
+```
+quantity 非必填
+selected:true 非必填
+```
+
+response
+
+```
+同列表
+```
+
+**4. 购物车删除某个商品**
+
+DELETE/cart/{productId}
+
+request
+
+```
+productId
+```
+
+response
+
+```
+同列表
+```
+
+**5. 全选**
+
+PUT/cart/selectAll
+
+request
+
+response
+
+
+**6. 全不选**
+
+PUT/cart/unSelectAll
+
+request
+
+response
+
+**7. 购物车中商品数量总和**
+
+GET/cart/products/sum
+
+request
+
+response
+
+---
+

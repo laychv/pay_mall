@@ -14,7 +14,7 @@ public class ProductController {
     @Autowired(required = false)
     private IProductService productService;
 
-    @PostMapping("list")
+    @PostMapping("/list")
     public ResponseVo<PageInfo> getProductList(
             @RequestParam("categoryId") Integer categoryId,
             @RequestParam("pageNum") Integer pageNum,
