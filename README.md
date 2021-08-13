@@ -221,3 +221,24 @@ https://github.com/pagehelper/Mybatis-PageHelper/blob/master/README_zh.md
 
 表单统一验证
 
+## 收获地址模块
+
+**1. 添加地址**
+
+无法返回数据库id问题
+
+添加地址,需要返回数据库中的id
+
+map=ResponseVo(status=0, msg=null, data={shippingId=null})
+
+修改mybatis,mapper.xml文件, 添加
+
+```
+useGeneratedKeys="true" keyProperty="id"
+```
+
+**2. 删除地址**
+
+注意:
+
+删除地址时候,需要uid,shippingId

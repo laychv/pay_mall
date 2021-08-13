@@ -15,9 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * Created by 廖师兄
- */
 @Slf4j
 @Transactional
 public class UserServiceImplTest extends PayMallApplicationTests {

@@ -305,3 +305,77 @@ response
 
 ---
 
+## 收货地址模块
+
+**1. 添加地址**
+
+POST/shipping/add
+
+request
+
+```
+receiverName
+recieverPhone
+recieverMobile
+recieverProvince
+recieverCity
+recieverDistrict
+recieverAddress
+recieverZip
+```
+
+response
+
+```json
+{
+  "status": 0,
+  "msg": "新建地址成功",
+  "data": {
+    "shippingId": 28
+  }
+}
+```
+
+**2. 删除地址**
+
+DELETE/shipping/delete
+
+request
+
+```
+shippingId
+```
+
+response
+
+**3. 更新地址**
+
+PUT/shipping/update/{shippingId}
+
+request
+
+```
+receiverName
+recieverPhone
+recieverMobile
+recieverProvince
+recieverCity
+recieverDistrict
+recieverAddress
+recieverZip
+```
+
+response
+
+**4. 地址列表**
+
+GET/shipping/list
+
+request
+
+```
+pageNum
+pageSize
+```
+
+response
