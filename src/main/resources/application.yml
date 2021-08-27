@@ -8,7 +8,11 @@ spring:
     host: 127.0.0.1
     port: 6379
 #    password:
-
+  rabbitmq:
+    addresses: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
 mybatis:
   type-aliases-package: com.laychv.pay_mall.dao
   mapper-locations: classpath*:mappers/*.xml

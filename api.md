@@ -379,3 +379,53 @@ pageSize
 ```
 
 response
+
+---
+
+## 订单模块
+
+**1. 创建订单**
+
+POST/order/create
+
+request
+
+```
+shippingId
+```
+
+response
+
+**2. 订单列表**
+
+GET/order/list
+
+request
+```
+pageNum
+pageSize
+```
+
+response
+
+**3. 订单详情**
+
+GET/order/detail/{orderNo}
+
+request
+```
+orderNo
+```
+
+response
+
+**4. 取消订单**
+
+PUT/order/cancel/{orderNo}
+
+request
+```
+orderNo
+```
+
+response

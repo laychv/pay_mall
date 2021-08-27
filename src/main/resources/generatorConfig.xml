@@ -47,12 +47,12 @@
         <!--               selectByExampleQueryId="false"-->
         <!--               enableUpdateByExample="false"/>-->
 
-        <!--        <table tableName="mall_order_item" domainObjectName="OrderItem"-->
-        <!--               enableCountByExample="false"-->
-        <!--               enableDeleteByExample="false"-->
-        <!--               enableSelectByExample="false"-->
-        <!--               selectByExampleQueryId="false"-->
-        <!--               enableUpdateByExample="false"/>-->
+        <table tableName="mall_order_item" domainObjectName="OrderItem"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false"
+               enableUpdateByExample="false"/>
 
         <!--        <table tableName="mall_user" domainObjectName="User"-->
         <!--               enableCountByExample="false"-->
@@ -75,11 +75,11 @@
         <!--            <columnOverride column="sub_images" jdbcType="VARCHAR"/>-->
         <!--        </table>-->
 
-        <table tableName="mall_shipping" domainObjectName="Shipping"
-               enableUpdateByExample="false"
-               enableSelectByExample="false"
-               enableDeleteByExample="false"
-               enableCountByExample="false"/>
+        <!--        <table tableName="mall_shipping" domainObjectName="Shipping"-->
+        <!--               enableUpdateByExample="false"-->
+        <!--               enableSelectByExample="false"-->
+        <!--               enableDeleteByExample="false"-->
+        <!--               enableCountByExample="false"/>-->
 
     </context>
 </generatorConfiguration>

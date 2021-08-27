@@ -2,8 +2,11 @@ package com.laychv.pay_mall.service;
 
 import com.laychv.pay_mall.form.CartAddForm;
 import com.laychv.pay_mall.form.CartUpdateForm;
+import com.laychv.pay_mall.pojo.Cart;
 import com.laychv.pay_mall.vo.CartVo;
 import com.laychv.pay_mall.vo.ResponseVo;
+
+import java.util.List;
 
 public interface ICartService {
     ResponseVo<CartVo> add(Integer uid, CartAddForm form);
@@ -19,4 +22,6 @@ public interface ICartService {
     ResponseVo<CartVo> UnSelectAll(Integer uid);
 
     ResponseVo<Integer> sum(Integer uid);
+
+    List<Cart> listForCart(Integer uid);
 }
